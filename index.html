@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTT Night</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
+  <link rel="icon" type="image/x-iconz" href="logo.jpeg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c1c1c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+    h1 {
+      color: #ffcc00;
+      margin: 20px;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+    }
+    .now-streaming {
+      font-size: 24px;
+      color: #ffcc00;
+      margin: 20px 0;
+      text-align-last: center;
+    }
+    .movie-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .movie-card {
+      width: 200px;
+      cursor: pointer;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+      background-color: #2c2c2c;
+      text-align: center;
+      padding: 10px;
+    }
+    .movie-card:hover {
+      transform: scale(1.05);
+    }
+    .movie-poster {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .movie-title {
+      font-size: 18px;
+      margin: 10px 0 5px 0;
+    }
+    .movie-genre {
+      font-size: 14px;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <h1>OTT Night - Movies</h1>
+  <div class="container">
+    <p class="now-streaming">Now Streaming</p>
+    <div class="movie-gallery">
+      <div class="movie-card" data-movie-id="Kalki_2898_AD">
+        <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg" alt="Movie Poster 3" class="movie-poster">
+        <div class="movie-title">Kalki 2898 AD</div>
+        <div class="movie-genre">Sci-fi</div>
+      </div>
+      <div class="movie-card" data-movie-id="hotspot">
+        <img src="https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg" alt="Movie Poster 1" class="movie-poster">
+        <div class="movie-title">Hot Spot</div>
+        <div class="movie-genre">Comedy, Drama</div>
+      </div>
+      <div class="movie-card" data-movie-id="maharaja">
+        <img src="https://assets.eenadu.net/article_img/Maharaja1.jpg" alt="Movie Poster 2" class="movie-poster">
+        <div class="movie-title">Maharaja</div>
+        <div class="movie-genre">Thriller</div>
+      </div>
+  </div>
+
+  <script>
+    console.log("Script is running");  // Debugging statement
+    const movieCards = document.querySelectorAll('.movie-card');
+
+    movieCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const movieId = card.getAttribute('data-movie-id');
+        console.log("Navigating to:", `video.html?movie=${movieId}`);  // Debugging statement
+        window.location.href = `video.html?movie=${movieId}`;
+      });
+    });
+  </script>
+</body>
+</html>

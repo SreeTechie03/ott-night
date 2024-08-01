@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTT Night</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
+  <link rel="icon" type="image/x-iconz" href="logo.jpeg">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c1c1c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+    }
+    h1 {
+      color: #ffcc00;
+      margin: 20px;
+    }
+    .video-container {
+      width: 90%;
+      max-width: 1200px;
+      margin-top: 20px;
+    }
+    .video-player {
+      width: 100%;
+      height: 90vh;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background: #000;
+    }
+    .movie-details {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
+    .movie-image {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+    .movie-info {
+      color: #fff;
+    }
+    .movie-info h2 {
+      margin: 0;
+      color: #ffcc00;
+    }
+    .movie-info p {
+      margin: 5px 0;
+      margin: 10px 0;
+    }
+    .movie-info a {
+      text-decoration: none;
+    }
+    .summary {
+      margin-top: 5px;
+      max-width: 1200px;
+      padding-right: 50px;
+    }
+    .movie-section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OTT Night</h1>
+  
+  <div class="movie-section" id="movie-section">
+    <div class="movie-details">
+      <img id="movie-image" class="movie-image" src="" alt="Movie Image">
+      <div class="movie-info">
+        <h2 id="movie-name">Movie Name:</h2>
+        <p id="release-date"><strong>Release Date:</strong></p>
+        <p id="cast"><strong>Cast:</strong></p>
+        <p id="director"><strong>Director:</strong></p>
+        <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank" style="color: #ffcc00;">Watch Trailer</a></p>
+        <p id="summary"><strong>Summary:</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-container">
+    <iframe id="video-player" class="video-player" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    console.log("Script is running");  // Debugging statement
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log("URL parameters:", urlParams);  // Debugging statement
+    const movieId = urlParams.get('movie');
+    console.log("Movie ID:", movieId);  // Debugging statement
+    const videoPlayer = document.getElementById('video-player');
+
+    const movieData = {
+      Kalki_2898_AD: {
+        image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg",
+        name: "Kalki 2898 AD",
+        releaseDate: "Sep 09,2024",
+        cast: "Prabhas,Amitabh Bachchan,Kamal Haasan",
+        director: "Nag Ashwin",
+         trailer: "https://youtu.be/-rTzyZZGJ84?si=N0--KygRtvjYYAQT",
+        summary: "A modern-day avatar of Vishnu, a Hindu god, who is believed to have descended to earth to protect the world from evil forces.",
+        // videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview"
+      },
+      hotspot: {
+        image: "https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg",
+        name: "Hot Spot",
+        releaseDate: "May 17, 2024",
+        cast: "Ammu Abhirami, Aadhitya Baaskar, Janani Iyer",
+        director: "Vignesh Karthick",
+        trailer: "https://youtu.be/-40TQ_v_f-Y?si=kXIEoWZeiUegwUH_",
+        summary: "It features three stories that are humorously evocative and a fourth one that's deeply disturbing.",
+        videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview"
+      },
+      maharaja: {
+        image: "https://assets.eenadu.net/article_img/Maharaja1.jpg",
+        name: "Maharaja",
+        releaseDate: "March 22, 2024",
+        cast: "Vijay Sethupathi, Anurag Kashyap, Mamta Mohandas",
+        director: "Nithilan Swaminathan",
+        trailer: "https://youtu.be/S5Zfs8P1Nxo?si=KDbOvOBktVkNUQ1F",
+        summary: "A barber seeks vengeance after his home is burglarized, cryptically telling police his 'lakshmi' has been taken, leaving them uncertain if it's a person or object. His quest to recover the elusive 'lakshmi' unfolds.",
+        videoUrl: "https://drive.google.com/file/d/1--NRsyWT8iFGiPGZMhSAH2bNHKOqY2c-/preview"
+      }
+    };
+
+    if (movieId && movieData[movieId]) {
+      const movie = movieData[movieId];
+      document.getElementById('movie-image').src = movie.image;
+      document.getElementById('movie-name').innerText = `Movie Name: ${movie.name}`;
+      document.getElementById('release-date').innerText = `Release Date: ${movie.releaseDate}`;
+      document.getElementById('cast').innerText = `Cast: ${movie.cast}`;
+      document.getElementById('director').innerText = `Director: ${movie.director}`;
+      document.getElementById('trailer-link').href = movie.trailer;
+      document.getElementById('summary').innerText = `Summary: ${movie.summary}`;
+      videoPlayer.src = movie.videoUrl;
+    } else {
+      document.body.innerHTML = '<h1>No video selected</h1>';
+    }
+  </script>
+</body>
+</html>
