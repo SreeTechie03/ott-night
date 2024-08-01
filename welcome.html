@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to OTT Night</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1c1c1c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+    }
+    .welcome-container {
+      text-align: center;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      background-color: #2c2c2c;
+    }
+    h1 {
+      color: #ffcc00;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    .enter-button {
+      background-color: #ffcc00;
+      color: #1c1c1c;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .enter-button:hover {
+      background-color: #e6b800;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>Welcome to OTT Night</h1>
+    <p>Your ultimate destination for streaming the best movies online. Discover a world of entertainment at your fingertips.</p>
+    <button class="enter-button" onclick="enterSite()">Enter</button>
+  </div>
+
+  <script>
+    function enterSite() {
+      window.location.href = 'index.html';  // Redirect to the main page
+    }
+  </script>
+</body>
+</html>
