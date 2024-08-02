@@ -99,6 +99,7 @@
       const movieId = urlParams.get('movie'); // Extract the movie ID from the URL
       const videoPlayer = document.getElementById('video-player');
 
+      // Define movie data with exact keys matching the expected movie IDs
       const movieData = {
         Dune_Part_two: {
           image: "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
@@ -156,25 +157,51 @@
           releaseDate: "August 12, 2023",
           cast: "Jayasurya, Anusree",
           director: "Ganesha Raj",
-          trailer: "https://youtu.be/nc2TewT0b_A?si=lnRUYQkKzQeb5RRR",
-          summary: "A murder investigation results in the police finding clues leading to a case from 5 years ago.",
-          videoUrl: "https://drive.google.com/file/d/1--NRsyWT8iFGiPGZMhSAH2bNHKOqY2c-/preview",
-        }
+          trailer: "https://youtu.be/nc2TewT0b_A?si=lnRUYQkK1LzG2hQa",
+          summary: "Maharaja is a feel-good family drama revolving around the life of a young man named Jai.",
+          videoUrl: "https://drive.google.com/file/d/1blpt6Oq3h08u_FyMdmsJ0aHTWQAgv8BU/preview",
+        },
+        premo: {
+          image: "https://assets.gadgets360cdn.com/pricee/assets/product/202308/Prema_Veyyil_Poster_1690871331.jpg",
+          name: "Prema Veyyil",
+          releaseDate: "March 22, 2024",
+          cast: "Vijay Sethupathi, Trisha",
+          director: "Atlee",
+          trailer: "https://youtu.be/BGsl82g5hWw?si=x9Jq1Fea8DoX9y7b",
+          summary: "A romantic comedy that explores the ups and downs of a couple in love.",
+          videoUrl: "https://drive.google.com/file/d/1TzUneD0IcdQ8c4fJAwjL1sjLM3kMCILR/preview",
+        },
+        guntur: {
+          image: "https://static.moviecrow.com/marquee/44aa13fe8a53c187d702ff3c5b35cd3d.jpg",
+          name: "Guntur Kaaram",
+          releaseDate: "January 12, 2024",
+          cast: "Mahesh Babu, Rashmika Mandanna",
+          director: "Trivikram Srinivas",
+          trailer: "https://youtu.be/Ha2IhG20UdQ?si=mc4tL2tsA8U_VgB4",
+          summary: "A high-octane action film that revolves around a powerful hero and his quest for justice.",
+          videoUrl: "https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
+        },
       };
 
+      // Check if the movie ID exists in the data
       if (movieData[movieId]) {
         const movie = movieData[movieId];
+
+        // Populate movie details
         document.getElementById('movie-image').src = movie.image;
-        document.getElementById('movie-name').textContent = `Movie Name: ${movie.name}`;
-        document.getElementById('release-date').textContent = `Release Date: ${movie.releaseDate}`;
-        document.getElementById('cast').textContent = `Cast: ${movie.cast}`;
-        document.getElementById('director').textContent = `Director: ${movie.director}`;
+        document.getElementById('movie-name').textContent = movie.name;
+        document.getElementById('release-date').innerHTML = `<strong>Release Date:</strong> ${movie.releaseDate}`;
+        document.getElementById('cast').innerHTML = `<strong>Cast:</strong> ${movie.cast}`;
+        document.getElementById('director').innerHTML = `<strong>Director:</strong> ${movie.director}`;
         document.getElementById('trailer-link').href = movie.trailer;
-        document.getElementById('summary').textContent = `Summary: ${movie.summary}`;
+        document.getElementById('summary').innerHTML = `<strong>Summary:</strong> ${movie.summary}`;
+
+        // Set video player source
         videoPlayer.src = movie.videoUrl;
       } else {
-        console.error('Movie data not found for ID:', movieId);
-        document.getElementById('movie-section').innerHTML = '<p style="color: red;">Movie data not found.</p>';
+        // If no matching movie is found, display an error message
+        document.getElementById('movie-section').innerHTML = `<p>Sorry, movie details not found.</p>`;
+        videoPlayer.style.display = 'none'; // Hide the video player
       }
     });
   </script>
