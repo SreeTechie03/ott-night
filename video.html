@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OTT Night</title>
-  <!-- Added Content-Security-Policy to restrict sources -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline';">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
   <link rel="icon" type="image/x-icon" href="logo.jpeg">
   <style>
     body {
@@ -41,7 +40,6 @@
       margin-top: 20px;
       width: 90%;
       max-width: 1200px;
-      flex-wrap: wrap;
     }
     .movie-image {
       width: 200px;
@@ -58,10 +56,10 @@
     }
     .movie-info p {
       margin: 5px 0;
+      margin: 10px 0;
     }
     .movie-info a {
       text-decoration: none;
-      color: #ffcc00;
     }
     .summary {
       margin-top: 5px;
@@ -78,13 +76,13 @@
   
   <div class="movie-section" id="movie-section">
     <div class="movie-details">
-      <img id="movie-image" class="movie-image" src="" alt="Movie Image"><!-- Added alt text for accessibility -->
+      <img id="movie-image" class="movie-image" src="" alt="Movie Image">
       <div class="movie-info">
         <h2 id="movie-name">Movie Name:</h2>
         <p id="release-date"><strong>Release Date:</strong></p>
         <p id="cast"><strong>Cast:</strong></p>
         <p id="director"><strong>Director:</strong></p>
-        <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank">Watch Trailer</a></p>
+        <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank" style="color: #ffcc00;">Watch Trailer</a></p>
         <p id="summary"><strong>Summary:</strong></p>
       </div>
     </div>
@@ -95,10 +93,10 @@
   </div>
 
   <script>
-    // Wait until the DOM is fully loaded before executing JavaScript
+    // Wait until the document is fully loaded
     document.addEventListener('DOMContentLoaded', function() {
       const urlParams = new URLSearchParams(window.location.search);
-      const movieId = urlParams.get('movie');
+      const movieId = urlParams.get('movie'); // Extract the movie ID from the URL
       const videoPlayer = document.getElementById('video-player');
 
       const movieData = {
@@ -125,50 +123,49 @@
         Raju_Yadav: {
           image: "https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg",
           name: "Raju Yadav",
-          releaseDate: "July 24, 2024.",
+          releaseDate: "July 24, 2024",
           cast: "Getup Srinu, Ankita Kharat",
-          director: "Krishnamachary",
-          trailer: "https://youtu.be/soiZdw5gGQA?si=lvfm-fAShoTdP6cW",
-          summary: "A man's life gets complicated when an accident causes a rare facial disorder that leaves him smiling all the time.",
-          videoUrl: "https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
+          director: "Krishna Karthik",
+          trailer: "https://youtu.be/tniyIBKhSpU?si=NiCEsBN0hLyMSIAD",
+          summary: "Raju Yadav works as a night watchman in a college in Hyderabad. He is an ambitious person but due to his fate, he could not achieve big things in his life.",
+          videoUrl: "https://drive.google.com/file/d/1DKgw_yf0uRFZd39OcJIXn7E5GfrqtnP5/preview",
         },
         Kalki_2898_AD: {
           image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg",
           name: "Kalki 2898 AD",
-          releaseDate: "Sep 09, 2024",
-          cast: "Prabhas, Amitabh Bachchan, Kamal Haasan",
+          releaseDate: "12 January 2024",
+          cast: "Prabhas, Amitabh Bachchan",
           director: "Nag Ashwin",
-          trailer: "https://youtu.be/-rTzyZZGJ84?si=N0--KygRtvjYYAQT",
-          summary: "A modern-day avatar of Vishnu, a Hindu god, who is believed to have descended to earth to protect the world from evil forces.",
-          videoUrl: "https://drive.google.com/file/d/1E4NO9RTffy5HtZ-kNHuTeKwR9a4Vb7E9/preview",
+          trailer: "https://youtu.be/2LhHeJ8DToE?si=p_q0HzgJqUuIY5hu",
+          summary: "Kalki 2898 AD is an epic science fiction film that takes place in the future where a heroic warrior fights to restore peace.",
+          videoUrl: "https://drive.google.com/file/d/1blpt6Oq3h08u_FyMdmsJ0aHTWQAgv8BU/preview",
         },
         hotspot: {
           image: "https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg",
           name: "Hot Spot",
-          releaseDate: "May 17, 2024",
-          cast: "Ammu Abhirami, Aadhitya Baaskar, Janani Iyer",
-          director: "Vignesh Karthick",
-          trailer: "https://youtu.be/-40TQ_v_f-Y?si=kXIEoWZeiUegwUH_",
-          summary: "It features three stories that are humorously evocative and a fourth one that's deeply disturbing.",
-          videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview"
+          releaseDate: "April 5, 2024",
+          cast: "Madhur Mittal, Nupur Sanon",
+          director: "Abir Sengupta",
+          trailer: "https://youtu.be/8DtCShSBSiQ?si=ARjKX_JMEo-Q3RlN",
+          summary: "Two genius engineering dropouts start a covert `business` that redefines the Indian OTT space.",
+          videoUrl: "https://drive.google.com/file/d/1y-tzez1uCp-mYGRCFPbAM7L6raBRyUvc/preview",
         },
         maharaja: {
           image: "https://assets.eenadu.net/article_img/Maharaja1.jpg",
           name: "Maharaja",
-          releaseDate: "March 22, 2024",
-          cast: "Vijay Sethupathi, Anurag Kashyap, Mamta Mohandas",
-          director: "Nithilan Swaminathan",
-          trailer: "https://youtu.be/-40TQ_v_f-Y?si=1uk0oa80RhBDE1aS",
-          summary: "An upright civil servant's life takes an unexpected turn when he is blamed for the suicide of a poor girl. The incident leads to a widespread protest by the public.",
-          videoUrl: "https://drive.google.com/file/d/1LG1XId2kx6avW1S9Oyl1Tz2bs-zvQZyP/preview"
+          releaseDate: "August 12, 2023",
+          cast: "Jayasurya, Anusree",
+          director: "Ganesha Raj",
+          trailer: "https://youtu.be/nc2TewT0b_A?si=lnRUYQkKzQeb5RRR",
+          summary: "A murder investigation results in the police finding clues leading to a case from 5 years ago.",
+          videoUrl: "https://drive.google.com/file/d/1--NRsyWT8iFGiPGZMhSAH2bNHKOqY2c-/preview",
         }
       };
 
-      // Check if movie data exists for the given movieId
       if (movieData[movieId]) {
         const movie = movieData[movieId];
         document.getElementById('movie-image').src = movie.image;
-        document.getElementById('movie-name').textContent = movie.name;
+        document.getElementById('movie-name').textContent = `Movie Name: ${movie.name}`;
         document.getElementById('release-date').textContent = `Release Date: ${movie.releaseDate}`;
         document.getElementById('cast').textContent = `Cast: ${movie.cast}`;
         document.getElementById('director').textContent = `Director: ${movie.director}`;
@@ -176,9 +173,8 @@
         document.getElementById('summary').textContent = `Summary: ${movie.summary}`;
         videoPlayer.src = movie.videoUrl;
       } else {
-        // Handle invalid or missing movieId
-        document.getElementById('movie-section').innerHTML = '<p>Movie not found. Please check the URL and try again.</p>';
-        videoPlayer.style.display = 'none'; // Hide video player if no movie is found
+        console.error('Movie data not found for ID:', movieId);
+        document.getElementById('movie-section').innerHTML = '<p style="color: red;">Movie data not found.</p>';
       }
     });
   </script>
