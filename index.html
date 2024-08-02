@@ -8,61 +8,62 @@
   <link rel="icon" type="image/x-icon" href="logo.png">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #1c1c1c;
+      background-color: #000;
+      color: #fff;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      color: #fff;
-      overflow: hidden;
     }
 
     .welcome-container {
       text-align: center;
-      max-width: 90%;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      background-color: #2c2c2c;
+      max-width: 800px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
     }
 
     h1 {
-      color: #ffcc00;
-      font-size: 8vw;
+      font-size: 48px;
+      font-weight: bold;
       margin-bottom: 20px;
+      color: #ffcc00;
     }
 
     p {
-      font-size: 4.5vw;
+      font-size: 24px;
       margin-bottom: 30px;
+      line-height: 1.4;
     }
 
     .enter-button {
       background-color: #ffcc00;
-      color: #1c1c1c;
+      color: #fff;
       border: none;
-      padding: 12px 30px;
-      font-size: 4.5vw;
-      border-radius: 8px;
+      padding: 15px 40px;
+      font-size: 20px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s;
     }
 
     .enter-button:hover {
-      background-color: #e6b800;
+      background-color: #ffcc00;
+      transform: translateY(-3px);
     }
 
-    @media (min-width: 768px) {
-      .welcome-container {
-        max-width: 600px;
-      }
+    .enter-button:active {
+      transform: translateY(1px);
+    }
 
+    @media (max-width: 768px) {
       h1 {
-        font-size: 48px;
+        font-size: 36px;
       }
 
       p {
@@ -70,14 +71,14 @@
       }
 
       .enter-button {
-        font-size: 18px;
+        font-size: 16px;
       }
     }
   </style>
 </head>
 <body>
   <div class="welcome-container">
-    <h1>Welcome to OTT Night</h1>
+    <h1>OTT Night</h1>
     <p>Your ultimate destination for streaming the best movies online.</p>
     <button class="enter-button" onclick="enterSite()">Enter</button>
   </div>
