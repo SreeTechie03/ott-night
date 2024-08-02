@@ -3,150 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OTT Night</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
+  <title>Movies List - OTT Night</title>
   <link rel="icon" type="image/x-icon" href="logo.jpeg">
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      padding: 20px;
       background-color: #1c1c1c;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       color: #fff;
     }
-
     h1 {
       color: #ffcc00;
-      margin: 20px;
-      font-size: 8vw;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-    }
-
-    .now-streaming {
-      font-size: 6vw;
-      color: #ffcc00;
-      margin: 20px 0;
       text-align: center;
     }
-
-    .movie-gallery {
+    .movies-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
+      gap: 20px;
     }
-
     .movie-card {
-      width: 45%;
-      max-width: 200px;
-      cursor: pointer;
-      border: 2px solid #ccc;
+      background-color: #333;
       border-radius: 8px;
+      padding: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
-      background-color: #2c2c2c;
+      max-width: 200px;
       text-align: center;
-      padding: 10px;
-      margin-bottom: 20px;
     }
-
-    .movie-card:hover {
-      transform: scale(1.05);
-    }
-
-    .movie-poster {
+    .movie-card img {
       width: 100%;
-      border-radius: 8px;
+      height: auto;
+      border-radius: 5px;
     }
-
-    .movie-title {
-      font-size: 4.5vw;
-      margin: 10px 0 5px 0;
-    }
-
-    .movie-genre {
-      font-size: 3.5vw;
+    .movie-card a {
+      text-decoration: none;
       color: #ffcc00;
-    }
-
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 48px;
-      }
-
-      .now-streaming {
-        font-size: 24px;
-      }
-
-      .movie-card {
-        width: 200px;
-      }
-
-      .movie-title {
-        font-size: 18px;
-      }
-
-      .movie-genre {
-        font-size: 14px;
-      }
+      display: block;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <h1>OTT Night - Movies</h1>
-  <div class="container">
-    <p class="now-streaming">Now Streaming</p>
-    <div class="movie-gallery">
-      <div class="movie-card" data-movie-id="Dune_Part_two">
-        <img src="https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg" alt="Movie Poster 6" class="movie-poster">
-        <div class="movie-title">Dune:Part two</div>
-        <div class="movie-genre">Sci-fi/Adventure</div>
-      </div>
-      <div class="movie-card" data-movie-id="Deadpool">
-        <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg" alt="Movie Poster 5" class="movie-poster">
-        <div class="movie-title">Deadpool & Wolverine</div>
-        <div class="movie-genre">Action/Comedy</div>
-      </div>
-      <div class="movie-card" data-movie-id="Raju_Yadav">
-        <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg" alt="Movie Poster 4" class="movie-poster">
-        <div class="movie-title">Raju Yadav</div>
-        <div class="movie-genre">Comedy, Drama, Romance</div>
-      </div>
-      <div class="movie-card" data-movie-id="Kalki_2898_AD">
-        <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg" alt="Movie Poster 3" class="movie-poster">
-        <div class="movie-title">Kalki 2898 AD</div>
-        <div class="movie-genre">Sci-fi</div>
-      </div>
-      <div class="movie-card" data-movie-id="hotspot">
-        <img src="https://upload.wikimedia.org/wikipedia/en/4/48/Hot_Spot_%28film%29.jpg" alt="Movie Poster 2" class="movie-poster">
-        <div class="movie-title">Hot Spot</div>
-        <div class="movie-genre">Comedy, Drama</div>
-      </div>
-      <div class="movie-card" data-movie-id="maharaja">
-        <img src="https://assets.eenadu.net/article_img/Maharaja1.jpg" alt="Movie Poster 1" class="movie-poster">
-        <div class="movie-title">Maharaja</div>
-        <div class="movie-genre">Thriller</div>
-      </div>
-    </div>
-  </div>
-
+  <div class="movies-container" id="movies-list"></div>
   <script>
-    console.log("Script is running");  
-    const movieCards = document.querySelectorAll('.movie-card');
+    const movies = [
+      { id: 'Dune_Part_two', name: 'Dune: Part Two', image: 'https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg' },
+      { id: 'Deadpool', name: 'Deadpool & Wolverine', image: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg' },
+      { id: 'Raju_Yadav', name: 'Raju Yadav', image: 'https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg' },
+      { id: 'Kalki_2898_AD', name: 'Kalki 2898 AD', image: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg' },
+      { id: 'hotspot', name: 'Hot Spot', image: 'https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg' },
+      { id: 'maharaja', name: 'Maharaja', image: 'https://assets.eenadu.net/article_img/Maharaja1.jpg' },
+    ];
 
-    movieCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const movieId = card.getAttribute('data-movie-id');
-        console.log("Navigating to:", `video.html?movie=${movieId}`);  
-        window.location.href = `video.html?movie=${movieId}`;
-      });
+    const moviesList = document.getElementById('movies-list');
+    movies.forEach(movie => {
+      const movieCard = document.createElement('div');
+      movieCard.className = 'movie-card';
+      movieCard.innerHTML = `
+        <img src="${movie.image}" alt="${movie.name}">
+        <h2>${movie.name}</h2>
+        <a href="video.html?movie=${movie.id}">Watch Now</a>
+      `;
+      moviesList.appendChild(movieCard);
     });
   </script>
 </body>
