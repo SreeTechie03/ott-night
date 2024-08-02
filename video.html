@@ -3,7 +3,7 @@
 <head>
   <title>OTT Night</title>
   <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
-  <link rel="icon" type="image/x-iconz" href="logo.jpeg">
+  <link rel="icon" type="image/x-icon" href="logo.jpeg">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -91,23 +91,53 @@
   </div>
 
   <script>
-    console.log("Script is running");  // Debugging statement
+    console.log("Script is running");  
     const urlParams = new URLSearchParams(window.location.search);
-    console.log("URL parameters:", urlParams);  // Debugging statement
+    console.log("URL parameters:", urlParams);  
     const movieId = urlParams.get('movie');
-    console.log("Movie ID:", movieId);  // Debugging statement
+    console.log("Movie ID:", movieId);  
     const videoPlayer = document.getElementById('video-player');
 
     const movieData = {
+      Deadpool: {
+        image: "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
+        name: "Dune:Part two",
+        releaseDate: "12 Dec 2023",
+        cast: "Austin Butler,Florence Pugh",
+        director: "Denis Villeneuve",
+        trailer: "https://youtu.be/U2Qp5pL3ovA?si=Or3aBS9523TW6_rl",
+        summary: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. ",
+        //videoUrl: "https://drive.google.com/file/d/1TzUneD0IcdQ8c4fJAwjL1sjLM3kMCILR/preview",
+      },
+      Deadpool: {
+        image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg",
+        name: "Deadpool & Wolverine",
+        releaseDate: "26 July 2024",
+        cast: "Ryan Reynolds,Hugh Jackman",
+        director: "Shawn Levy",
+        trailer: "https://youtu.be/L-kiatWK3gE?si=T-m1KJnQsLlgrI9G",
+        summary: "Deadpool's peaceful existence comes crashing down when the Time Variance Authority recruits him to help safeguard the multiverse. ",
+        videoUrl: "https://drive.google.com/file/d/1TzUneD0IcdQ8c4fJAwjL1sjLM3kMCILR/preview",
+      },
+      Raju_Yadav: {
+        image: "https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg",
+        name: "Raju Yadav",
+        releaseDate: "July 24, 2024.",
+        cast: "Getup Srinu, Ankita Kharat",
+        director: "Krishnamachary",
+        trailer: "https://youtu.be/soiZdw5gGQA?si=lvfm-fAShoTdP6cW",
+        summary: "A man's life gets complicated when an accident causes a rare facial disorder that leaves him smiling all the time.",
+        videoUrl: "https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
+      },
       Kalki_2898_AD: {
         image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg",
         name: "Kalki 2898 AD",
-        releaseDate: "Sep 09,2024",
-        cast: "Prabhas,Amitabh Bachchan,Kamal Haasan",
+        releaseDate: "Sep 09, 2024",
+        cast: "Prabhas, Amitabh Bachchan, Kamal Haasan",
         director: "Nag Ashwin",
-         trailer: "https://youtu.be/-rTzyZZGJ84?si=N0--KygRtvjYYAQT",
+        trailer: "https://youtu.be/-rTzyZZGJ84?si=N0--KygRtvjYYAQT",
         summary: "A modern-day avatar of Vishnu, a Hindu god, who is believed to have descended to earth to protect the world from evil forces.",
-        // videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview"
+        //videoUrl: "https://drive.google.com/file/d/1E4NO9RTffy5HtZ-kNHuTeKwR9a4Vb7E9/preview",
       },
       hotspot: {
         image: "https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg",
@@ -133,6 +163,7 @@
 
     if (movieId && movieData[movieId]) {
       const movie = movieData[movieId];
+      console.log("Movie Data:", movie);  
       document.getElementById('movie-image').src = movie.image;
       document.getElementById('movie-name').innerText = `Movie Name: ${movie.name}`;
       document.getElementById('release-date').innerText = `Release Date: ${movie.releaseDate}`;
@@ -142,6 +173,7 @@
       document.getElementById('summary').innerText = `Summary: ${movie.summary}`;
       videoPlayer.src = movie.videoUrl;
     } else {
+      console.log("No valid movie data found."); 
       document.body.innerHTML = '<h1>No video selected</h1>';
     }
   </script>
