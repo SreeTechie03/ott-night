@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OTT Night</title>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline';">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
   <link rel="icon" type="image/x-icon" href="logo.jpeg">
   <style>
     body {
@@ -40,7 +38,6 @@
       margin-top: 20px;
       width: 90%;
       max-width: 1200px;
-      flex-wrap: wrap;
     }
     .movie-image {
       width: 200px;
@@ -57,10 +54,10 @@
     }
     .movie-info p {
       margin: 5px 0;
+      margin: 10px 0;
     }
     .movie-info a {
       text-decoration: none;
-      color: #ffcc00;
     }
     .summary {
       margin-top: 5px;
@@ -83,7 +80,7 @@
         <p id="release-date"><strong>Release Date:</strong></p>
         <p id="cast"><strong>Cast:</strong></p>
         <p id="director"><strong>Director:</strong></p>
-        <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank">Watch Trailer</a></p>
+        <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank" style="color: #ffcc00;">Watch Trailer</a></p>
         <p id="summary"><strong>Summary:</strong></p>
       </div>
     </div>
@@ -94,90 +91,91 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const movieId = urlParams.get('movie');
-      const videoPlayer = document.getElementById('video-player');
+    console.log("Script is running");  
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log("URL parameters:", urlParams);  
+    const movieId = urlParams.get('movie');
+    console.log("Movie ID:", movieId);  
+    const videoPlayer = document.getElementById('video-player');
 
-      const movieData = {
-        Dune_Part_two: {
-          image: "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
-          name: "Dune: Part Two",
-          releaseDate: "12 Dec 2023",
-          cast: "Austin Butler, Florence Pugh",
-          director: "Denis Villeneuve",
-          trailer: "https://youtu.be/U2Qp5pL3ovA?si=Or3aBS9523TW6_rl",
-          summary: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
-          videoUrl: "https://drive.google.com/file/d/1y-tzez1uCp-mYGRCFPbAM7L6raBRyUvc/preview",
-        },
-        Deadpool: {
-          image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg",
-          name: "Deadpool & Wolverine",
-          releaseDate: "26 July 2024",
-          cast: "Ryan Reynolds, Hugh Jackman",
-          director: "Shawn Levy",
-          trailer: "https://youtu.be/L-kiatWK3gE?si=T-m1KJnQsLlgrI9G",
-          summary: "Deadpool's peaceful existence comes crashing down when the Time Variance Authority recruits him to help safeguard the multiverse.",
-          videoUrl: "https://drive.google.com/file/d/1TzUneD0IcdQ8c4fJAwjL1sjLM3kMCILR/preview",
-        },
-        Raju_Yadav: {
-          image: "https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg",
-          name: "Raju Yadav",
-          releaseDate: "July 24, 2024.",
-          cast: "Getup Srinu, Ankita Kharat",
-          director: "Krishnamachary",
-          trailer: "https://youtu.be/soiZdw5gGQA?si=lvfm-fAShoTdP6cW",
-          summary: "A man's life gets complicated when an accident causes a rare facial disorder that leaves him smiling all the time.",
-          videoUrl: "https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
-        },
-        Kalki_2898_AD: {
-          image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg",
-          name: "Kalki 2898 AD",
-          releaseDate: "Sep 09, 2024",
-          cast: "Prabhas, Amitabh Bachchan, Kamal Haasan",
-          director: "Nag Ashwin",
-          trailer: "https://youtu.be/-rTzyZZGJ84?si=N0--KygRtvjYYAQT",
-          summary: "A modern-day avatar of Vishnu, a Hindu god, who is believed to have descended to earth to protect the world from evil forces.",
-          videoUrl: "https://drive.google.com/file/d/1E4NO9RTffy5HtZ-kNHuTeKwR9a4Vb7E9/preview",
-        },
-        hotspot: {
-          image: "https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg",
-          name: "Hot Spot",
-          releaseDate: "May 17, 2024",
-          cast: "Ammu Abhirami, Aadhitya Baaskar, Janani Iyer",
-          director: "Vignesh Karthick",
-          trailer: "https://youtu.be/-40TQ_v_f-Y?si=kXIEoWZeiUegwUH_",
-          summary: "It features three stories that are humorously evocative and a fourth one that's deeply disturbing.",
-          videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview"
-        },
-        maharaja: {
-          image: "https://assets.eenadu.net/article_img/Maharaja1.jpg",
-          name: "Maharaja",
-          releaseDate: "March 22, 2024",
-          cast: "Vijay Sethupathi, Anurag Kashyap, Mamta Mohandas",
-          director: "Nithilan Swaminathan",
-          trailer: "https://youtu.be/-40TQ_v_f-Y?si=1uk0oa80RhBDE1aS",
-          summary: "An upright civil servant's life takes an unexpected turn when he is blamed for the suicide of a poor girl. The incident leads to a widespread protest by the public.",
-          videoUrl: "https://drive.google.com/file/d/1LG1XId2kx6avW1S9Oyl1Tz2bs-zvQZyP/preview"
-        }
-      };
-
-      if (movieData[movieId]) {
-        const movie = movieData[movieId];
-        document.getElementById('movie-image').src = movie.image;
-        document.getElementById('movie-name').textContent = movie.name;
-        document.getElementById('release-date').textContent = `Release Date: ${movie.releaseDate}`;
-        document.getElementById('cast').textContent = `Cast: ${movie.cast}`;
-        document.getElementById('director').textContent = `Director: ${movie.director}`;
-        document.getElementById('trailer-link').href = movie.trailer;
-        document.getElementById('summary').textContent = `Summary: ${movie.summary}`;
-        videoPlayer.src = movie.videoUrl;
-      } else {
-        // Handle invalid or missing movieId
-        document.getElementById('movie-section').innerHTML = '<p>Movie not found. Please check the URL and try again.</p>';
-        videoPlayer.style.display = 'none';
+    const movieData = {
+      Dune_Part_two: {
+        image: "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
+        name: "Dune:Part two",
+        releaseDate: "12 Dec 2023",
+        cast: "Austin Butler,Florence Pugh",
+        director: "Denis Villeneuve",
+        trailer: "https://youtu.be/U2Qp5pL3ovA?si=Or3aBS9523TW6_rl",
+        summary: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. ",
+        videoUrl: "https://drive.google.com/file/d/1y-tzez1uCp-mYGRCFPbAM7L6raBRyUvc/preview",
+      },
+      Deadpool: {
+        image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg",
+        name: "Deadpool & Wolverine",
+        releaseDate: "26 July 2024",
+        cast: "Ryan Reynolds,Hugh Jackman",
+        director: "Shawn Levy",
+        trailer: "https://youtu.be/L-kiatWK3gE?si=T-m1KJnQsLlgrI9G",
+        summary: "Deadpool's peaceful existence comes crashing down when the Time Variance Authority recruits him to help safeguard the multiverse. ",
+        videoUrl: "https://drive.google.com/file/d/1TzUneD0IcdQ8c4fJAwjL1sjLM3kMCILR/preview",
+      },
+      Raju_Yadav: {
+        image: "https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg",
+        name: "Raju Yadav",
+        releaseDate: "July 24, 2024.",
+        cast: "Getup Srinu, Ankita Kharat",
+        director: "Krishnamachary",
+        trailer: "https://youtu.be/soiZdw5gGQA?si=lvfm-fAShoTdP6cW",
+        summary: "A man's life gets complicated when an accident causes a rare facial disorder that leaves him smiling all the time.",
+        videoUrl: "https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
+      },
+      Kalki_2898_AD: {
+        image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg",
+        name: "Kalki 2898 AD",
+        releaseDate: "Sep 09, 2024",
+        cast: "Prabhas, Amitabh Bachchan, Kamal Haasan",
+        director: "Nag Ashwin",
+        trailer: "https://youtu.be/-rTzyZZGJ84?si=N0--KygRtvjYYAQT",
+        summary: "A modern-day avatar of Vishnu, a Hindu god, who is believed to have descended to earth to protect the world from evil forces.",
+        //videoUrl: "https://drive.google.com/file/d/1E4NO9RTffy5HtZ-kNHuTeKwR9a4Vb7E9/preview",
+      },
+      hotspot: {
+        image: "https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg",
+        name: "Hot Spot",
+        releaseDate: "May 17, 2024",
+        cast: "Ammu Abhirami, Aadhitya Baaskar, Janani Iyer",
+        director: "Vignesh Karthick",
+        trailer: "https://youtu.be/-40TQ_v_f-Y?si=kXIEoWZeiUegwUH_",
+        summary: "It features three stories that are humorously evocative and a fourth one that's deeply disturbing.",
+        videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview"
+      },
+      maharaja: {
+        image: "https://assets.eenadu.net/article_img/Maharaja1.jpg",
+        name: "Maharaja",
+        releaseDate: "March 22, 2024",
+        cast: "Vijay Sethupathi, Anurag Kashyap, Mamta Mohandas",
+        director: "Nithilan Swaminathan",
+        trailer: "https://youtu.be/S5Zfs8P1Nxo?si=KDbOvOBktVkNUQ1F",
+        summary: "A barber seeks vengeance after his home is burglarized, cryptically telling police his 'lakshmi' has been taken, leaving them uncertain if it's a person or object. His quest to recover the elusive 'lakshmi' unfolds.",
+        videoUrl: "https://drive.google.com/file/d/1--NRsyWT8iFGiPGZMhSAH2bNHKOqY2c-/preview"
       }
-    });
+    };
+
+    if (movieId && movieData[movieId]) {
+      const movie = movieData[movieId];
+      console.log("Movie Data:", movie);  
+      document.getElementById('movie-image').src = movie.image;
+      document.getElementById('movie-name').innerText = `Movie Name: ${movie.name}`;
+      document.getElementById('release-date').innerText = `Release Date: ${movie.releaseDate}`;
+      document.getElementById('cast').innerText = `Cast: ${movie.cast}`;
+      document.getElementById('director').innerText = `Director: ${movie.director}`;
+      document.getElementById('trailer-link').href = movie.trailer;
+      document.getElementById('summary').innerText = `Summary: ${movie.summary}`;
+      videoPlayer.src = movie.videoUrl;
+    } else {
+      console.log("No valid movie data found."); 
+      document.body.innerHTML = '<h1>No video selected</h1>';
+    }
   </script>
 </body>
 </html>
