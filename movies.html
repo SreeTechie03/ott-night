@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OTT Night</title>
   <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
-  <link rel="icon" type="image/x-iconz" href="logo.jpeg">
+  <link rel="icon" type="image/x-icon" href="logo.jpeg">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,28 +17,35 @@
       align-items: center;
       color: #fff;
     }
+
     h1 {
       color: #ffcc00;
       margin: 20px;
+      font-size: 8vw;
     }
+
     .container {
       width: 90%;
       max-width: 1200px;
     }
+
     .now-streaming {
-      font-size: 24px;
+      font-size: 6vw;
       color: #ffcc00;
       margin: 20px 0;
-      text-align-last: center;
+      text-align: center;
     }
+
     .movie-gallery {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
+
     .movie-card {
-      width: 200px;
+      width: 45%;
+      max-width: 200px;
       cursor: pointer;
       border: 2px solid #ccc;
       border-radius: 8px;
@@ -45,21 +54,48 @@
       background-color: #2c2c2c;
       text-align: center;
       padding: 10px;
+      margin-bottom: 20px;
     }
+
     .movie-card:hover {
       transform: scale(1.05);
     }
+
     .movie-poster {
       width: 100%;
       border-radius: 8px;
     }
+
     .movie-title {
-      font-size: 18px;
+      font-size: 4.5vw;
       margin: 10px 0 5px 0;
     }
+
     .movie-genre {
-      font-size: 14px;
+      font-size: 3.5vw;
       color: #ffcc00;
+    }
+
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .now-streaming {
+        font-size: 24px;
+      }
+
+      .movie-card {
+        width: 200px;
+      }
+
+      .movie-title {
+        font-size: 18px;
+      }
+
+      .movie-genre {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -68,31 +104,47 @@
   <div class="container">
     <p class="now-streaming">Now Streaming</p>
     <div class="movie-gallery">
+      <div class="movie-card" data-movie-id="Dune:Part two">
+        <img src="https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg" alt="Movie Poster 6" class="movie-poster">
+        <div class="movie-title">Dune:Part two</div>
+        <div class="movie-genre">Sci-fi/Adventure</div>
+      </div>
+      <div class="movie-card" data-movie-id="Deadpool">
+        <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg" alt="Movie Poster 5" class="movie-poster">
+        <div class="movie-title">Deadpool & Wolverine</div>
+        <div class="movie-genre">Action/Comedy</div>
+      </div>
+      <div class="movie-card" data-movie-id="Raju_Yadav">
+        <img src="https://upload.wikimedia.org/wikipedia/en/1/16/Raju_Yadav_%282024_film%29.jpg" alt="Movie Poster 4" class="movie-poster">
+        <div class="movie-title">Raju Yadav</div>
+        <div class="movie-genre">Comedy, Drama, Romance</div>
+      </div>
       <div class="movie-card" data-movie-id="Kalki_2898_AD">
         <img src="https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg" alt="Movie Poster 3" class="movie-poster">
         <div class="movie-title">Kalki 2898 AD</div>
         <div class="movie-genre">Sci-fi</div>
       </div>
       <div class="movie-card" data-movie-id="hotspot">
-        <img src="https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg" alt="Movie Poster 1" class="movie-poster">
+        <img src="https://upload.wikimedia.org/wikipedia/en/4/48/Hot_Spot_%28film%29.jpg" alt="Movie Poster 2" class="movie-poster">
         <div class="movie-title">Hot Spot</div>
         <div class="movie-genre">Comedy, Drama</div>
       </div>
       <div class="movie-card" data-movie-id="maharaja">
-        <img src="https://assets.eenadu.net/article_img/Maharaja1.jpg" alt="Movie Poster 2" class="movie-poster">
+        <img src="https://assets.eenadu.net/article_img/Maharaja1.jpg" alt="Movie Poster 1" class="movie-poster">
         <div class="movie-title">Maharaja</div>
         <div class="movie-genre">Thriller</div>
       </div>
+    </div>
   </div>
 
   <script>
-    console.log("Script is running");  // Debugging statement
+    console.log("Script is running");  
     const movieCards = document.querySelectorAll('.movie-card');
 
     movieCards.forEach(card => {
       card.addEventListener('click', () => {
         const movieId = card.getAttribute('data-movie-id');
-        console.log("Navigating to:", `video.html?movie=${movieId}`);  // Debugging statement
+        console.log("Navigating to:", `video.html?movie=${movieId}`);  
         window.location.href = `video.html?movie=${movieId}`;
       });
     });
