@@ -12,94 +12,117 @@
       margin: 0;
       padding: 0;
       background-color: #1c1c1c;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: #fff;
+      text-align: center;
     }
     h1 {
       color: #ffcc00;
       margin: 20px;
+      font-size: 2em;
     }
-    .video-container {
+    .container {
       width: 90%;
       max-width: 1200px;
-      margin-top: 20px;
+      margin: 0 auto;
+      padding: 10px;
     }
-    .video-player {
-      width: 100%;
-      height: 50vh;
-      max-height: 80vh;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      background: #000;
-    }
-    .movie-details {
+    .movie-section {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .movie-content {
+      display: flex;
+      flex-direction: row;
       align-items: flex-start;
-      margin-top: 20px;
-      width: 90%;
+      justify-content: center;
+      width: 100%;
       max-width: 1200px;
+      margin-bottom: 20px;
     }
     .movie-image {
-      width: 200px;
+      width: 100%;
+      max-width: 300px; /* Adjusted for better fit */
       height: auto;
       border-radius: 8px;
       margin-right: 20px;
     }
     .movie-info {
+      max-width: 600px;
+      text-align: left;
       color: #fff;
     }
     .movie-info h2 {
-      margin: 0;
+      margin: 10px 0;
       color: #ffcc00;
     }
     .movie-info p {
       margin: 5px 0;
-      margin: 10px 0;
     }
     .movie-info a {
       text-decoration: none;
+      color: #ffcc00;
     }
-    .summary {
-      margin-top: 5px;
-      max-width: 1200px;
-      padding-right: 50px;
+    .video-container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 20px 0;
     }
-    .movie-section {
-      margin-bottom: 40px;
+    .video-player {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      background: #000;
+    }
+    .not-found {
+      color: #ffcc00;
+      font-size: 1.2em;
+    }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5em;
+      }
+      .movie-image {
+        max-width: 100%;
+      }
+      .movie-info {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <h1>OTT Night</h1>
-  
-  <div class="movie-section" id="movie-section">
-    <div class="movie-details">
-      <img id="movie-image" class="movie-image" src="" alt="Movie Image">
-      <div class="movie-info">
-        <h2 id="movie-name">Movie Name:</h2>
-        <p id="release-date"><strong>Release Date:</strong></p>
-        <p id="cast"><strong>Cast:</strong></p>
-        <p id="director"><strong>Director:</strong></p>
-        <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank" style="color: #ffcc00;">Watch Trailer</a></p>
-        <p id="summary"><strong>Summary:</strong></p>
+  <div class="container">
+    <div class="movie-section" id="movie-section">
+      <div class="movie-content">
+        <img id="movie-image" class="movie-image" src="" alt="Movie Image">
+        <div class="movie-info">
+          <h2 id="movie-name">Movie Name:</h2>
+          <p id="release-date"><strong>Release Date:</strong></p>
+          <p id="cast"><strong>Cast:</strong></p>
+          <p id="director"><strong>Director:</strong></p>
+          <p><strong>Trailer:</strong> <a id="trailer-link" href="" target="_blank">Watch Trailer</a></p>
+          <p id="summary"><strong>Summary:</strong></p>
+        </div>
+      </div>
+
+      <div class="video-container">
+        <iframe id="video-player" class="video-player" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
     </div>
-  </div>
-
-  <div class="video-container">
-    <iframe id="video-player" class="video-player" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <p id="not-found" class="not-found" style="display: none;">Movie not found.</p>
   </div>
 
   <script>
-    // Wait until the document is fully loaded
     document.addEventListener('DOMContentLoaded', function() {
       const urlParams = new URLSearchParams(window.location.search);
       const movieId = urlParams.get('movie'); // Extract the movie ID from the URL
-      const videoPlayer = document.getElementById('video-player');
-
-      // Define movie data with exact keys matching the expected movie IDs
       const movieData = {
         Dune_Part_two: {
           image: "https://upload.wikimedia.org/wikipedia/en/5/52/Dune_Part_Two_poster.jpeg",
@@ -129,7 +152,7 @@
           director: "Krishna Karthik",
           trailer: "https://youtu.be/tniyIBKhSpU?si=NiCEsBN0hLyMSIAD",
           summary: "Raju Yadav works as a night watchman in a college in Hyderabad. He is an ambitious person but due to his fate, he could not achieve big things in his life.",
-          videoUrl:"https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
+          videoUrl: "https://drive.google.com/file/d/1UGZUVLBMcdphfKnRb9C7N5jzpwZYexHW/preview",
         },
         Kalki_2898_AD: {
           image: "https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg",
@@ -139,7 +162,7 @@
           director: "Nag Ashwin",
           trailer: "https://youtu.be/2LhHeJ8DToE?si=p_q0HzgJqUuIY5hu",
           summary: "Kalki 2898 AD is an epic science fiction film that takes place in the future where a heroic warrior fights to restore peace.",
-          videoUrl: "https://drive.google.com/file/d/1blpt6Oq3h08u_FyMdmsJ0aHTWQAgv8BU/preview",
+          //videoUrl: "https://drive.google.com/file/d/1blpt6Oq3h08u_FyMdmsJ0aHTWQAgv8BU/preview",
         },
         hotspot: {
           image: "https://m.media-amazon.com/images/M/MV5BMDQ3MDQyMGQtZmFhMy00N2ZjLWE0NDEtYTYwZWQ2NmJlYTZlXkEyXkFqcGdeQXVyMTUzNTgzNzM0._V1_.jpg",
@@ -149,17 +172,17 @@
           director: "Abir Sengupta",
           trailer: "https://youtu.be/8DtCShSBSiQ?si=ARjKX_JMEo-Q3RlN",
           summary: "Two genius engineering dropouts start a covert `business` that redefines the Indian OTT space.",
-          videoUrl: "https://drive.google.com/file/d/1y-tzez1uCp-mYGRCFPbAM7L6raBRyUvc/preview",
+          videoUrl: "https://drive.google.com/file/d/17FOCMhCfOaeRQNaWQnI9hWTZaAAzK5vA/preview",
         },
         maharaja: {
           image: "https://assets.eenadu.net/article_img/Maharaja1.jpg",
           name: "Maharaja",
           releaseDate: "August 12, 2023",
-          cast: "Jayasurya, Anusree",
-          director: "Ganesha Raj",
-          trailer: "https://youtu.be/nc2TewT0b_A?si=lnRUYQkK1LzG2hQa",
-          summary: "Maharaja is a feel-good family drama revolving around the life of a young man named Jai.",
-          videoUrl: "https://drive.google.com/file/d/1blpt6Oq3h08u_FyMdmsJ0aHTWQAgv8BU/preview",
+          cast: "Jr NTR, Kiara Advani",
+          director: "K. S. Ravindra",
+          trailer: "https://youtu.be/BmYH1w7D2T4?si=CO3jFSYLPOLN8HVR",
+          summary: "Maharaja is an action-packed drama focusing on the life of a royal heir who must navigate through political and personal challenges.",
+          videoUrl: "https://drive.google.com/file/d/1--NRsyWT8iFGiPGZMhSAH2bNHKOqY2c-/preview",
         },
         maidaan: {
           image: "https://upload.wikimedia.org/wikipedia/en/3/3d/Maidaan_Poster.jpg",
@@ -173,25 +196,20 @@
         }
       };
 
-      // Check if the movie ID exists in the data
       if (movieData[movieId]) {
         const movie = movieData[movieId];
-
-        // Populate movie details
         document.getElementById('movie-image').src = movie.image;
-        document.getElementById('movie-name').textContent = movie.name;
-        document.getElementById('release-date').innerHTML = `<strong>Release Date:</strong> ${movie.releaseDate}`;
-        document.getElementById('cast').innerHTML = `<strong>Cast:</strong> ${movie.cast}`;
-        document.getElementById('director').innerHTML = `<strong>Director:</strong> ${movie.director}`;
+        document.getElementById('movie-name').textContent = `Movie Name: ${movie.name}`;
+        document.getElementById('release-date').textContent = `Release Date: ${movie.releaseDate}`;
+        document.getElementById('cast').textContent = `Cast: ${movie.cast}`;
+        document.getElementById('director').textContent = `Director: ${movie.director}`;
         document.getElementById('trailer-link').href = movie.trailer;
-        document.getElementById('summary').innerHTML = `<strong>Summary:</strong> ${movie.summary}`;
-
-        // Set video player source
-        videoPlayer.src = movie.videoUrl;
+        document.getElementById('summary').textContent = `Summary: ${movie.summary}`;
+        document.getElementById('video-player').src = movie.videoUrl;
+        document.getElementById('not-found').style.display = 'none';
       } else {
-        // If no matching movie is found, display an error message
-        document.getElementById('movie-section').innerHTML = `<p>Sorry, movie details not found.</p>`;
-        videoPlayer.style.display = 'none'; // Hide the video player
+        document.getElementById('movie-section').style.display = 'none';
+        document.getElementById('not-found').style.display = 'block';
       }
     });
   </script>
