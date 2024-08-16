@@ -1,6 +1,6 @@
-Welcome to OTT Nights - Your Go-To Movie Streaming Site!
+Welcome to CineStream - Your Go-To Movie Streaming Site!
 
-At OTT Nights, we bring the movies to you! Explore a huge collection of films across all your favorite genres, including action, drama, comedy, and romance. We update our selection regularly, so there’s always something new to watch.
+At CineStream, we bring the movies to you! Explore a huge collection of films across all your favorite genres, including action, drama, comedy, and romance. We update our selection regularly, so there’s always something new to watch.
 
 ->Features:
 --> Large Movie Library: Browse our wide range of movies, from popular hits to hidden gems.
