@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to OTT Night</title>
+  <title>Welcome to CineStream</title>
   <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:;">
-  <link rel="icon" type="image/x-icon" href="logo.png">
+  <link rel="icon" type="image/x-icon" href="tv logo.png">
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -17,69 +17,72 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .welcome-container {
       text-align: center;
-      max-width: 800px;
-      padding: 40px;
-      background-color: #1c1c1c;
+      max-width: 90%;
+      padding: 20px;
+      background-color: #292929;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
+      border-radius: 15px;
+      box-sizing: border-box;
     }
 
     h1 {
-      font-size: 48px;
+      font-size: 40px;
       font-weight: bold;
       margin-bottom: 20px;
       color: #ffcc00;
     }
 
     p {
-      font-size: 24px;
+      font-size: 18px;
       margin-bottom: 30px;
-      line-height: 1.4;
+      line-height: 1.6;
     }
 
     .enter-button {
       background-color: #ffcc00;
-      color: #fff;
+      color: #1c1c1c;
       border: none;
       padding: 15px 40px;
       font-size: 20px;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s, transform 0.3s;
     }
 
     .enter-button:hover {
-      background-color: #ffcc00;
-      transform: translateY(-3px);
+      background-color: #e6b800;
+      transform: translateY(-5px);
     }
 
     .enter-button:active {
-      transform: translateY(1px);
+      transform: translateY(2px);
     }
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 36px;
+        font-size: 32px;
       }
 
       p {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .enter-button {
-        font-size: 16px;
+        font-size: 18px;
+        padding: 12px 30px;
       }
     }
   </style>
 </head>
 <body>
   <div class="welcome-container">
-    <h1>OTT Night</h1>
-    <p>Your ultimate destination for streaming the best movies online.</p>
+    <h1>CineStream</h1>
+    <p>Stream your favorite movies anytime, anywhere.</p>
     <button class="enter-button" onclick="enterSite()">Enter</button>
   </div>
 
