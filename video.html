@@ -34,19 +34,20 @@
       font-size: 2em;
     }
     ::-webkit-scrollbar {
-      width: 1px;
+      width: 12px;
     }
+
     ::-webkit-scrollbar-track {
-      background: #000000;
+      background: #1e1e1e;
     }
+
     ::-webkit-scrollbar-thumb {
-      background-color: #ffea00;
-      border-radius: 6px;
-      border: 2px solid #f1f1f1;
+      background: #333;
+      border-radius: 10px;
     }
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: #ffea00 #555454;
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
     }
     .container {
       width: 90%;
@@ -84,7 +85,7 @@
       color: #eaeaea;
     }
     .movie-info h2 {
-      color: #f39c12;
+      color: #ffcc00;
       font-size: 1.8em;
       margin-bottom: 10px;
     }
@@ -93,7 +94,7 @@
       font-size: 1.1em;
     }
     .movie-info a {
-      color: #f39c12;
+      color: #ffcc00;
       text-decoration: none;
       font-weight: bold;
     }
@@ -210,6 +211,17 @@
           summary: "A sci-fi epic set in a post-apocalyptic world, where humanity fights for its survival against dystopian forces.",
           videoUrl: "https://drive.google.com/file/d/1e3DZNHqJPzpxhAGN05nRftaDjtLYIJ4u/preview",
         },
+        Raayan: {
+          image: "https://upload.wikimedia.org/wikipedia/en/e/e4/Raayan_poster.jpg",
+          name: "Raayan",
+          releaseDate: "23 Aug 2024",
+          cast: " Dhanush, Sandeep Kishan",
+          director: "Dhanush",
+          trailer: "https://youtu.be/FsKNCqwz0XA",
+          summary: "After his family is killed, a young man trains to avenge their murders. Seeking those responsible, his quest leads him through the criminal underworld.",
+          videoUrl: "https://moviesfiles03.s3.eu-north-1.amazonaws.com/mov_bbb.mp4",
+        },
+        
       };
 
       const movie = movieData[movieId];
@@ -227,7 +239,64 @@
       } else {
         document.getElementById('not-found').style.display = 'block';
       }
+      
     });
+
+    (function() {
+        let devToolsOpen = false;
+        const detectionInterval = 1000;
+    
+        function detectDevTools() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+    
+            if (widthThreshold || heightThreshold) {
+                if (!devToolsOpen) {
+                    devToolsOpen = true;
+                    window.location.href = 'about:blank';
+                }
+            } else {
+                devToolsOpen = false;
+            }
+        }
+    
+        setInterval(detectDevTools, detectionInterval);
+    })();
+
+    document.addEventListener('keydown', function(e) {
+        const devToolsKeys = [
+            123, 27, 85, 73, 74, 83, 67, 88, 80
+        ];
+    
+        if (devToolsKeys.includes(e.keyCode) || (e.ctrlKey && (devToolsKeys.includes(e.keyCode)))) {
+            window.location.href = 'about:blank';
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        const devToolsKeys = [
+            123, 85
+        ];
+
+        if ((e.ctrlKey && devToolsKeys.includes(e.keyCode)) || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+
+        if ((e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
+            e.preventDefault();
+            return false;
+        }
+
+        if ((e.ctrlKey && e.keyCode === 83) || (e.ctrlKey && e.keyCode === 80)) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
   </script>
 </body>
 </html>
