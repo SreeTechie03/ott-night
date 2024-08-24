@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CineStream</title>
   <link rel="icon" type="image/x-icon" href="tv logo.png">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,7 +21,7 @@
 
     header {
       width: 100%;
-      max-width: 1500px;
+      max-width: 1550px;
       background-color: #2b2b2b;
       padding: 20px;
       display: flex;
@@ -65,6 +67,15 @@
 
     .toggle-button:hover {
       background-color: #e6b800;
+    }
+
+    .admin-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5em;
+      color: #ffcc00;
+      cursor: pointer;
     }
 
     .movies-container {
@@ -116,17 +127,20 @@
     }
 
     ::-webkit-scrollbar {
-      width: 1px;
+      width: 12px;
     }
 
     ::-webkit-scrollbar-track {
-      background: #000000;
+      background: #1e1e1e;
     }
 
     ::-webkit-scrollbar-thumb {
-      background-color: #ffea00;
-      border-radius: 6px;
-      border: 2px solid #f1f1f1;
+      background: #333;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
     }
 
     html {
@@ -154,13 +168,16 @@
       #content-title {
         font-size: 1.5em;
       }
+
       .search-input {
         width: 100%;
         max-width: 200px;
       }
+
       .movie-card h2 {
         font-size: 0.9em;
       }
+
       .movie-card a {
         font-size: 0.8em;
         padding: 8px;
@@ -171,6 +188,7 @@
       .search-input {
         max-width: 120px;
       }
+
       .toggle-button {
         padding: 8px 16px;
         font-size: 0.9em;
@@ -182,15 +200,16 @@
   <header>
     <h1 id="content-title">CineStream</h1>
     <input type="text" id="search-input" class="search-input" placeholder="Search...">
+    <i class="bi bi-person-circle admin-icon" onclick="window.location.href='sign-in.html'"></i>
   </header>
   <button class="toggle-button" onclick="toggleContent()">Show Web Series</button>
   <div class="movies-container" id="content-list"></div>
   <script>
     const movies = [
+      { id: 'Raayan', name: 'Raayan', image: 'https://upload.wikimedia.org/wikipedia/en/e/e4/Raayan_poster.jpg' },
       { id: 'Kalki_2898_AD', name: 'Kalki 2898 AD', image: 'https://upload.wikimedia.org/wikipedia/en/4/4c/Kalki_2898_AD.jpg' },
       { id: 'The_Birthday_Boy', name: 'The Birthday Boy', image: 'https://resizing.flixster.com/tFLHRGO3D3r6D91FFcfIwx7Va3o=/206x305/v2/https://resizing.flixster.com/E9HpoR_SHEw50niPZb7w07-NEFA=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2Q0ZTI2ODg0LTVjMDktNGFlOS05YzdkLWIyMDViY2I1NTM2Yy5qcGc=' },
       { id: 'Bharateeyudu_2', name: 'Bharateeyudu 2', image: 'https://upload.wikimedia.org/wikipedia/en/6/6f/Indian_2_poster.jpg' },
-      
     ];
 
     const webSeries = [
@@ -239,7 +258,63 @@
     };
 
     document.getElementById('search-input').addEventListener('input', searchContent);
+
     renderContent(movies);
+    (function() {
+        let devToolsOpen = false;
+        const detectionInterval = 1000;
+    
+        function detectDevTools() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
+    
+            if (widthThreshold || heightThreshold) {
+                if (!devToolsOpen) {
+                    devToolsOpen = true;
+                    window.location.href = 'about:blank';
+                }
+            } else {
+                devToolsOpen = false;
+            }
+        }
+    
+        setInterval(detectDevTools, detectionInterval);
+    })();
+
+    document.addEventListener('keydown', function(e) {
+        const devToolsKeys = [
+            123, 27, 85, 73, 74, 83, 67, 88, 80
+        ];
+    
+        if (devToolsKeys.includes(e.keyCode) || (e.ctrlKey && (devToolsKeys.includes(e.keyCode)))) {
+            window.location.href = 'about:blank';
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        const devToolsKeys = [
+            123, 85
+        ];
+
+        if ((e.ctrlKey && devToolsKeys.includes(e.keyCode)) || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+
+        if ((e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
+            e.preventDefault();
+            return false;
+        }
+
+        if ((e.ctrlKey && e.keyCode === 83) || (e.ctrlKey && e.keyCode === 80)) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
   </script>
 </body>
 </html>
