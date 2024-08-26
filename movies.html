@@ -184,6 +184,32 @@
         font-size: 0.9em;
       }
     }
+    #progress-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #ffcc00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .progress-message {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .progress-icon {
+    font-size: 3em;
+    color: #ffcc00;
+  }
   </style>
 </head>
 <body>
@@ -194,6 +220,9 @@
   </header>
   <button class="toggle-button" onclick="toggleContent()">Show Web Series</button>
   <div class="movies-container" id="content-list"></div>
+  <div id="progress-overlay">
+  <div class="progress-message">This Website Is Under Progress</div>
+  </div>
   <script>
     const movies = [
       { id: 'Raayan', name: 'Raayan', image: 'https://upload.wikimedia.org/wikipedia/en/e/e4/Raayan_poster.jpg' },
@@ -305,6 +334,9 @@
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     }, false);
+    setTimeout(() => {
+    document.getElementById('progress-overlay').style.display = 'none';
+  }, 1000); // Adjust time as needed
   </script>
 </body>
 </html>
