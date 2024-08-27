@@ -184,7 +184,7 @@
         font-size: 0.9em;
       }
     }
-    #progress-overlay {
+/*     #progress-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -209,7 +209,7 @@
   .progress-icon {
     font-size: 3em;
     color: #ffcc00;
-  }
+  } */
      @keyframes bounce {
           0%, 20%, 50%, 80%, 100% {
             transform: translateY(0);
@@ -288,9 +288,9 @@
   </header>
   <button class="toggle-button" onclick="toggleContent()">Show Web Series</button>
   <div class="movies-container" id="content-list"></div>
-  <div id="progress-overlay">
+<!--   <div id="progress-overlay">
   <div class="progress-message">This Website Is Under Progress</div>
-  </div>
+  </div> -->
   <script>
     const movies = [
       { id: 'Viraaji', name: 'Viraaji', image: 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/viraaji-et00405762-1721800912.jpg' },
@@ -403,9 +403,9 @@
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault();
     }, false);
-    setTimeout(() => {
-    document.getElementById('progress-overlay').style.display = 'none';
-  }, 1000); // Adjust time as needed
+  //   setTimeout(() => {
+  //   document.getElementById('progress-overlay').style.display = 'none';
+  // }, 1000); // Adjust time as needed
     
     window.onload = function () {
       setTimeout(() => {
