@@ -126,61 +126,61 @@
     gtag('js', new Date());
     gtag('config', 'G-SHSFL9WR89');
 
-    // (function() {
-    //     let devToolsOpen = false;
-    //     const detectionInterval = 1000;
+    (function() {
+        let devToolsOpen = false;
+        const detectionInterval = 1000;
     
-    //     function detectDevTools() {
-    //         const widthThreshold = window.outerWidth - window.innerWidth > 160;
-    //         const heightThreshold = window.outerHeight - window.innerHeight > 160;
+        function detectDevTools() {
+            const widthThreshold = window.outerWidth - window.innerWidth > 160;
+            const heightThreshold = window.outerHeight - window.innerHeight > 160;
     
-    //         if (widthThreshold || heightThreshold) {
-    //             if (!devToolsOpen) {
-    //                 devToolsOpen = true;
-    //                 window.location.href = 'about:blank';
-    //             }
-    //         } else {
-    //             devToolsOpen = false;
-    //         }
-    //     }
+            if (widthThreshold || heightThreshold) {
+                if (!devToolsOpen) {
+                    devToolsOpen = true;
+                    window.location.href = 'about:blank';
+                }
+            } else {
+                devToolsOpen = false;
+            }
+        }
     
-    //     setInterval(detectDevTools, detectionInterval);
-    // })();
+        setInterval(detectDevTools, detectionInterval);
+    })();
 
-    // document.addEventListener('keydown', function(e) {
-    //     const devToolsKeys = [
-    //         123, 27, 85, 73, 74, 83, 67, 88, 80
-    //     ];
+    document.addEventListener('keydown', function(e) {
+        const devToolsKeys = [
+            123, 27, 85, 73, 74, 83, 67, 88, 80
+        ];
     
-    //     if (devToolsKeys.includes(e.keyCode) || (e.ctrlKey && (devToolsKeys.includes(e.keyCode)))) {
-    //         window.location.href = 'about:blank';
-    //     }
-    // });
+        if (devToolsKeys.includes(e.keyCode) || (e.ctrlKey && (devToolsKeys.includes(e.keyCode)))) {
+            window.location.href = 'about:blank';
+        }
+    });
 
-    // document.addEventListener('keydown', function(e) {
-    //     const devToolsKeys = [
-    //         123, 85
-    //     ];
+    document.addEventListener('keydown', function(e) {
+        const devToolsKeys = [
+            123, 85
+        ];
 
-    //     if ((e.ctrlKey && devToolsKeys.includes(e.keyCode)) || e.keyCode === 123) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
+        if ((e.ctrlKey && devToolsKeys.includes(e.keyCode)) || e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
 
-    //     if ((e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
+        if ((e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.shiftKey && e.keyCode === 74)) {
+            e.preventDefault();
+            return false;
+        }
 
-    //     if ((e.ctrlKey && e.keyCode === 83) || (e.ctrlKey && e.keyCode === 80)) {
-    //         e.preventDefault();
-    //         return false;
-    //     }
-    // });
+        if ((e.ctrlKey && e.keyCode === 83) || (e.ctrlKey && e.keyCode === 80)) {
+            e.preventDefault();
+            return false;
+        }
+    });
 
-    // document.addEventListener('contextmenu', function(e) {
-    //     e.preventDefault();
-    // }, false);
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    }, false);
   </script>
                       <script src="https://code.adclickppc.com/7s-banner-ad.js"></script>
                       <script>
