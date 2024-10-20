@@ -1,11 +1,25 @@
-Welcome to CineStream 
-here is the link : https://ottnight.me/
+# CineStream
 
-At CineStream, we bring the movies to you! Explore a huge collection of films across all your favorite genres, including action, drama, comedy, and romance. We update our selection regularly, so there’s always something new to watch.
+CineStream is a web-based movie streaming platform where users can browse and watch their favorite movies or web series from a wide selection. It offers an engaging user interface and functionality similar to popular streaming platforms. 
 
-->Features:
---> Large Movie Library: Browse our wide range of movies, from popular hits to hidden gems.
---> Easy to Use: Our simple design makes it easy for you to find and watch movies you love.
---> High-Quality Streaming: Enjoy watching movies in high definition for the best viewing experience.
---> Personalized Picks: Get movie recommendations based on what you like.
---> Watch Anywhere: Stream movies on any device, anytime, whether you're at home or on the go.
+## Features
+
+- **Responsive Design**: A clean and modern interface that is fully responsive for different screen sizes.
+- **Search Functionality**: Users can search for movies and web series by title.
+- **Movie and Web Series Toggle**: Switch between movies and web series with a single click.
+- **Dynamic Content Rendering**: Movies and web series are displayed dynamically using JavaScript.
+- **Embedded Video Streaming**: View movie trailers or play movies directly within the platform.
+- **Loading Animation**: A loading screen animation is shown while content is being prepared.
+- **Mobile-Friendly**: The platform adapts seamlessly to mobile and tablet devices.
+
+## Project Structure
+
+- `index.html`: The landing page where users are welcomed to the CineStream platform. From here, they can proceed to browse movies.
+- `movies.html`: The main page where users can search, view movie lists, and toggle between movies and web series.
+- `video.html`: The video page where users can watch the selected movie's trailer or stream the movie.
+
+## How to Use
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/SreeTechie03
