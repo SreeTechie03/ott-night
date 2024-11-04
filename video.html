@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream - Your Movie Destination</title>
+    <link rel="stylesheet" href="video.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <svg viewBox="0 0 24 24" class="logo-icon">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-3.5l6-4.5-6-4.5z"/>
+                </svg>
+                <h1>CineStream</h1>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="Search movies...">
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div id="movieDetails" class="movie-details">
+            <div class="movie-poster">
+                <img id="moviePoster" src="" alt="Movie Poster">
+                <div class="movie-rating">
+                    <span id="movieRating"></span>
+                </div>
+            </div>
+            
+            <div class="movie-info">
+                <h2 id="movieTitle"></h2>
+                <div class="movie-meta">
+                    <span id="movieYear"></span>
+                </div>
+                
+                <div class="movie-crew">
+                    <div class="crew-item">
+                        <label>Director</label>
+                        <span id="movieDirector"></span>
+                    </div>
+                    <div class="crew-item">
+                        <label>Cast</label>
+                        <span id="movieCast"></span>
+                    </div>
+                </div>
+
+                <p id="moviePlot" class="movie-plot"></p>
+                
+                <div class="action-buttons">
+                    <button id="playButton" class="btn-primary">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                        Play Now
+                    </button>
+                    <button id="trailerButton" class="btn-secondary">
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M10 16.5l6-4.5-6-4.5z"/></svg>
+                        Watch Trailer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-player-container" id="videoPlayerContainer">
+            <div class="video-wrapper">
+                <iframe id="videoPlayer" allowfullscreen></iframe>
+                <button class="close-video" id="closeVideo">×</button>
+            </div>
+        </div>
+
+        <div class="recommendations">
+            <h3>More Like This</h3>
+            <div class="recommendations-grid" id="recommendationsGrid"></div>
+        </div>
+    </main>
+
+    <script src="movieData.js"></script>
+    <script src="video.js"></script>
+</body>
+</html>

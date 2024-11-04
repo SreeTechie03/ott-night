@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineStream</title>
+    <link rel="stylesheet" href="movies.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-container">
+        <div class="loading-animation">
+            <div class="loading-circle"></div>
+            <div class="loading-text">CineStream</div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="logo">CineStream</div>
+        </div>
+        <div class="nav-search">
+            <input type="text" id="search-input" placeholder="Search movies & shows...">
+            <span class="search-icon">🔍</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-type="movies">Movies</button>
+            <button class="nav-btn" data-type="series">Series</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div id="featured-content" class="featured-content"></div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <h2 id="section-title">Popular Movies</h2>
+                <select id="genre-filter">
+                    <option value="all">All Genres</option>
+                    <option value="action">Action</option>
+                    <option value="drama">Drama</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="horror">Horror</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                </select>
+            </div>
+            <div id="content-grid" class="content-grid"></div>
+        </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
